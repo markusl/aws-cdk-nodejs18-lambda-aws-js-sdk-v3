@@ -21,7 +21,9 @@ export class ExampleLambdaStack extends Stack {
       runtime: lambda.Runtime.NODEJS_18_X,
       bundling: {
         minify: false,
-        externalModules: ['@aws-sdk/*'],
+        // Node.js 18 automatically includes AWS JS SDK v3
+        // If you use JS SDK v2, you need to configure externalModules
+        // externalModules: ['@aws-sdk/*'],
         format: lambda_nodejs.OutputFormat.ESM,
       },
       logRetention: logs.RetentionDays.ONE_WEEK,
